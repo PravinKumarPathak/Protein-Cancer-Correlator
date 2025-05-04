@@ -1,0 +1,85 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <!-- <style> 
+            body { 
+                background: linear-gradient(to right, #f6d365, #fda085); 
+                color: #333; 
+            } 
+    
+            .container { 
+                border: 2px solid #f6d365; 
+                border-radius: 15px; 
+                padding: 20px; 
+                margin: 20px auto; 
+                background-color: white; 
+                box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            } 
+    
+            .transaction-table { 
+                margin-top: 20px; 
+            } 
+    
+            .transaction-actions { 
+                display: flex; 
+                align-items: center; 
+                gap: 10px; 
+            } 
+    
+            .btn-primary { 
+                background-color: #f6d365; 
+                border-color: #f6d365; 
+            } 
+    
+            .btn-primary:hover { 
+                background-color: #f6d365; 
+                border-color: #f6d365; 
+            } 
+        </style>  -->
+    </head> 
+    <body> 
+
+        <header class="header">
+            <h1>Cancer Prediction Model</h1>
+          </header>
+        <div class="container"> 
+            <h1 class="text-center">Prediction Result</h1> 
+    
+            <table class="table transaction-table">
+                    <tr>
+                        <th>Model Type</th>
+                        <td>{{ model_info.type }}</td>
+                    </tr> 
+                    <tr>
+                        <th>Model Name</th>
+                        <td>{{ model_info.model }}</td>
+                    </tr> 
+                    <tr> 
+                        <th>Model Prediction</th> 
+                        <td>{{ result }}</td>  
+                    </tr>
+                    <tr>
+                        <th>Accuracy</th>
+                        <td>{{ model_info.accuracy }}</td>
+                    </tr>
+                    <tr>
+                        <th>F1 Score</th>
+                        <td>{{ model_info.f1_score }}</td>
+                    </tr>
+                    <tr>
+                        <th>ROC-AUC Score</th>
+                        <td>{{ model_info.roc_auc }}</td>
+                    </tr> 
+            </table> 
+    
+        </div> 
+
+        <footer class="footer">
+            <p>&copy; 2025 Cancer Prediction Model. All rights reserved.</p>
+          </footer>
+    </body> 
+</html>
