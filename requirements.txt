@@ -1,6 +1,6 @@
 # Core Web Framework
 Flask==3.1.0
-gunicorn
+gunicorn==21.2.0
 
 # Data Handling
 pandas==2.2.3
@@ -14,7 +14,7 @@ tensorflow-cpu==2.19.0
 keras==3.9.2
 h5py==3.13.0
 
-# Plotting (if needed for debugging/metrics)
+# Plotting (optional, used for debugging or metrics)
 matplotlib==3.10.1
 
 # Web/App Utilities
@@ -24,13 +24,3 @@ Jinja2==3.1.6
 click==8.1.8
 MarkupSafe==3.0.2
 requests==2.32.3
-
-# Required by Flask and others
-certifi==2025.1.31
-charset-normalizer==3.4.1
-idna==3.10
-urllib3==2.4.0
-python-dateutil==2.9.0.post0
-tzdata==2025.2
-threadpoolctl==3.6.0
-typing_extensions==4.13.2
