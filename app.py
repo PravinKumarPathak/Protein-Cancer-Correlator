@@ -1,6 +1,7 @@
 # Importing Modules
 import warnings
 warnings.filterwarnings('ignore')
+import os
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -162,5 +163,6 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)  
 
