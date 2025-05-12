@@ -1,0 +1,154 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(ellipse at center, #0c0c1e 0%, #050510 100%);
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.navbar a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+
+.main-content {
+  margin-top: 100px;
+}
+
+.main-content h1 {
+  font-size: 2.8rem;
+  color: #c88cff;
+  margin-bottom: 15px;
+}
+
+.main-content p {
+  font-size: 1.1rem;
+  color: #d4a6f4;
+  margin-bottom: 30px;
+}
+
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box input {
+  padding: 12px 20px;
+  width: 300px;
+  border: none;
+  border-color: #bb78f4;
+  border-radius: 8px;
+  background-color: #444;
+  color: #fff;
+  font-size: 16px;
+}
+
+.search-box button {
+  padding: 12px 20px;
+  background: linear-gradient(to right, #9f6eff, #bb78f4);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.search-box button:hover {
+  opacity: 0.9;
+}
+
+#dna-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+#dnaCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, #0a0a1a 0%, #050510 100%);
+}
+
+
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+.form-container input[type="text"] {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background-color: #1a1d3d;
+  color: #fff;
+}
+
+.form-container button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #8a4fff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #6c35db;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+

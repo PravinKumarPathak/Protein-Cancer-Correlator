@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Protein Analysis Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <a href="{{ url_for('hello') }}" class="nav-link">Home</a>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="EPIC Logo" class="logo">
+    <a href="{{ url_for('about') }}" class="nav-link">About</a>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Protein Responsibility -->
+    <section class="card">
+      <h2>🧬 Protein Responsibility</h2>
+      <p class="resp-status">
+        Responsibility:
+        {% if responsibility == 'YES' %}
+          <span class="badge yes">✔️ YES</span>
+        {% else %}
+          <span class="badge no">❌ NO</span>
+        {% endif %}
+      </p>
+      <p class="desc">
+        The <span class="protein-name">[{{ protein_name }}]</span> protein is 
+        {% if responsibility == 'YES' %}associated{% else %}not associated{% endif %} with cancer.
+      </p>
+    </section>
+
+    <!-- Model Performance -->
+    <section class="card">
+      <h2>📈 Model Performance</h2>
+      <p class="desc">Model used: <strong>{{ model_used }}</strong></p>
+      <div class="metrics">
+        <div>✅ Accuracy : <strong>{{ accuracy }}</strong></div>
+        <div>✅ Precision : <strong>{{ precision }}</strong></div>
+        <div>✅ Recall : <strong>{{ recall }}</strong></div>
+        <div>✅ F1 Score : <strong>{{ f1_score }}</strong></div>
+      </div>
+    </section>
+
+    <!-- Confusion Matrix -->
+    {% if cm %}
+    <section class="card">
+      <h2>🗂️ Confusion Matrix</h2>
+      <table class="confusion-matrix">
+        <thead>
+          <tr>
+            <th rowspan="2">ACTUAL<br>VALUE</th>
+            <th colspan="2">PREDICTED VALUE</th>
+          </tr>
+          <tr>
+            <th>+ve</th>
+            <th>-ve</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>+ve</th>
+            <td class="green">{{ cm.TP }}</td>
+            <td class="red">{{ cm.FN }}</td>
+          </tr>
+          <tr>
+            <th>-ve</th>
+            <td class="red">{{ cm.FP }}</td>
+            <td class="green">{{ cm.TN }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    {% endif %}
+  </main>
+</body>
+</html>

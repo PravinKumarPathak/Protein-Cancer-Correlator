@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Cancer Gene Identifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="{{ url_for('hello') }}" class="nav-link">Home</a>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="EPIC Logo">
+      </div>
+      <div><a href= "{{ url_for('about') }}" class="active">About</a></div>
+    </nav>
+  </header>
+
+  <section class="about-section">
+    <h1>About the Project</h1>
+    <p class="subtitle"><strong>Essential Proteins/Genes Identification of Cancer using Machine Learning</strong> is a research-driven project aimed at improving cancer diagnostics by analyzing protein and gene data through advanced machine learning algorithms. Our goal is to assist researchers and medical professionals in identifying cancer-associated biomarkers more efficiently.</p>
+
+
+
+ <h2>Objective</h2>
+    <p>
+      To develop a tool that leverages machine learning techniques to identify and predict the association of proteins/genes with various types of cancer, based on biological datasets.
+    </p>
+
+    <h2>Project Features</h2>
+    <ul>
+      <li>Protein/Gene search functionality</li>
+      <li>Machine Learning-based analysis</li>
+      <li>Interactive and user-friendly interface</li>
+      <li>Designed for academic and research use</li>
+    </ul>
+
+
+
+
+
+    <div class="mentor">
+      <h2>Guided By</h2>
+      <div class="mentor-card">
+        <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Dr. Sovan Saha">
+        <p><strong>Dr. Sovan Saha</strong><br>Project Guide</p>
+      </div>
+    </div>
+
+    <div class="team">
+      <h2>Team Members</h2>
+      <div class="team-grid">
+        <div class="member-card">
+          <img src="{{ url_for('static', filename='student1.jpg') }}" alt="Student 1">
+          <p><strong>Pravin Kumar Pathak</strong><br>Roll No: 1029</p>
+        </div>
+        <div class="member-card">
+          <img src="{{ url_for('static', filename='student2.jpg') }}" alt="Student 2">
+          <p><strong>Roshan Pathak</strong><br>Roll No: 1024</p>
+        </div>
+        <div class="member-card">
+          <img src="{{ url_for('static', filename='student3.jpg') }}" alt="Student 3">
+          <p><strong>Raghvendra Singh</strong><br>Roll No: 1021</p>
+        </div>
+        <div class="member-card">
+          <img src="{{ url_for('static', filename='student4.jpg') }}" alt="Student 4">
+          <p><strong>Jayprakash Maurya</strong><br>Roll No: 1056</p>
+        </div>
+        <div class="member-card">
+          <img src="{{ url_for('static', filename='student5.jpg') }}" alt="Student 5">
+          <p><strong>Pankaj Kumar Singh</strong><br>Roll No: 1040</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protein Cancer Correlator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<canvas id="dnaCanvas"></canvas>
+
+<video autoplay muted loop id="dna-bg">
+  <source src="{{ url_for('static', filename='dna-animation.mp4') }}" type="video/mp4">
+</video>
+
+<header>
+  <nav class="navbar">
+    <div class="nav-left"><a href="{{ url_for('hello') }}">Home</a></div>
+    <div class="logo"><img src="{{ url_for('static', filename='logo.png') }}" alt="EPIC Logo"></div>
+    <div class="nav-right"><a href="{{ url_for('about') }}" class="nav-link">About</a></div>
+  </nav>
+</header>
+
+<main class="main-content">
+  <h1>Protein Cancer Correlator</h1>
+  <p>A machine learning and deep learning-based tool to predict cancer association from protein data</p>
+
+  <form method="POST" action="/" class="form-container">
+    <input type="text" name="proteinInput" placeholder="Enter a protein name (e.g., TP53)" required>
+    
+    <div class="radio-group">
+      <label>
+        <input type="radio" name="model_choice" value="ml" checked>
+        Use Machine Learning Model
+      </label>
+      <label>
+        <input type="radio" name="model_choice" value="dl">
+        Use Deep Learning Model
+      </label>
+    </div>
+
+    <button type="submit">🔍 Analyze</button>
+  </form>
+</main>
+
+<script>
+const canvas = document.getElementById("dnaCanvas");
+const ctx = canvas.getContext("2d");
+
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+window.addEventListener("resize", () => {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+});
+
+let scrollSpeedFactor = 1;
+window.addEventListener("scroll", () => {
+  scrollSpeedFactor = 1 + window.scrollY / 1000;
+});
+
+let time = 0;
+
+const helixLength = 200;
+const helixSpacing = 8;
+const amplitude = 80;
+const frequency = 0.05;
+const baseRadius = 3;
+
+function drawHelix(centerX, colorStart, colorEnd) {
+  for (let i = 0; i < helixLength; i++) {
+    const scrollOffset = (time * 50 * scrollSpeedFactor) % (helixLength * helixSpacing);
+    const y = height - i * helixSpacing + scrollOffset;
+    if (y < 0) continue;
+
+    const offset = Math.sin(i * frequency + time) * amplitude;
+    const x1 = centerX + offset;
+    const x2 = centerX - offset;
+
+    const alpha = 1 - (i * 1.5) / helixLength;
+
+    ctx.fillStyle = `rgba(200, 136, 255, ${alpha})`;
+    ctx.beginPath(); ctx.arc(x1, y, baseRadius, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(x2, y, baseRadius, 0, Math.PI * 2); ctx.fill();
+
+    const gradient = ctx.createLinearGradient(x1, y, x2, y);
+    gradient.addColorStop(0, colorStart); gradient.addColorStop(1, colorEnd);
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = 1.5;
+    ctx.globalAlpha = alpha * 0.8;
+    ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2, y); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+  drawHelix(width * 0.15, "#a78bfa", "#f472b6");
+  drawHelix(width * 0.85, "#60a5fa", "#a78bfa");
+  time += 0.01 * scrollSpeedFactor;
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
